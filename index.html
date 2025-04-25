@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenithly | Premium Web Solutions for Boutique Retailers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A0A0A',
+                        secondary: '#1F1F1F',
+                        accent: '#D4AF37', // Premium Gold
+                        light: '#F5F3EF',
+                        dark: '#121212'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.8s ease-out',
+                        'marquee': 'marquee 25s linear infinite',
+                        'float': 'float 6s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: 0, transform: 'translateY(20px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' }
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-border { border: 1px solid rgba(212, 175, 55, 0.3) }
+        .text-stroke { -webkit-text-stroke: 1px #D4AF37; color: transparent }
+        .hover-scale { transition: transform 0.3s ease, box-shadow 0.3s ease }
+        .hover-scale:hover { transform: scale(1.03); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) }
+        
+        .service-card {
+            background: linear-gradient(180deg, rgba(245, 243, 239, 0) 0%, #F5F3EF 100%);
+            backdrop-filter: blur(12px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .testimonial-card {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-input {
+            background: rgba(245, 243, 239, 0.7);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-bottom-color: #D4AF37;
+            background: rgba(245, 243, 239, 0.9);
+        }
+        
+        .price-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #D4AF37;
+            cursor: pointer;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.2) 100%);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 3s infinite;
+        }
+
+        .swiper-pagination-bullet {
+            background: #D4AF37 !important;
+            opacity: 0.5 !important;
+            width: 12px !important;
+            height: 12px !important;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1 !important;
+            width: 30px !important;
+            border-radius: 4px !important;
+        }
+    </style>
+</head>
+<body class="bg-light font-sans text-dark">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-light/90 backdrop-blur z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-3xl font-serif font-bold text-primary flex items-center">
+                    <span class="text-accent">ZENITH</span>LY
+                    <span class="text-xs font-sans font-normal ml-2 bg-accent text-dark px-2 py-1 rounded-full">PREMIUM</span>
+                </a>
+                
+                <div class="hidden lg:flex items-center space-x-10">
+                    <a href="#home" class="nav-link text-primary hover:text-accent transition">Home</a>
+                    <a href="#portfolio" class="nav-link text-primary hover:text-accent transition">Portfolio</a>
+                    <a href="#services" class="nav-link text-primary hover:text-accent transition">Services</a>
+                    <a href="#process" class="nav-link text-primary hover:text-accent transition">Process</a>
+                    <a href="#testimonials" class="nav-link text-primary hover:text-accent transition">Clients</a>
+                    <button class="bg-accent px-6 py-3 rounded-full text-dark font-medium hover:bg-opacity-90 transition flex items-center">
+                        Request Website
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </button>
+                </div>
+                
+                <button class="lg:hidden text-primary">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-light to-light/70 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b3da" 
+                  alt="Luxury Retail Store" 
+                  class="w-full h-full object-cover object-center">
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-20">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8 animate-fade-up">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
+                        <span class="text-accent font-medium">PREMIUM WEB SOLUTIONS</span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-6xl font-serif font-bold text-primary leading-tight">
+                        Elevate Your <span class="text-accent">Boutique's</span> Digital Presence
+                    </h1>
+                    
+                    <p class="text-lg text-gray-600">
+                        Zenithly crafts bespoke digital experiences for luxury fashion retailers, 
+                        transforming your boutique's online presence into a premium destination.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-accent px-8 py-4 rounded-full text-dark font-medium hover:bg-opacity-90 transition flex items-center justify-center">
+                            Start Your Project
+                            <i class="fas fa-arrow-right ml-3"></i>
+                        </button>
+                        <button class="border border-accent px-8 py-4 rounded-full text-accent hover:bg-accent hover:text-dark transition flex items-center justify-center">
+                            <i class="fas fa-play-circle mr-3"></i>
+                            Watch Showreel
+                        </button>
+                    </div>
+                    
+                    <div class="flex items-center space-x-6 pt-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-10 h-10 rounded-full border-2 border-light">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-light">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-10 h-10 rounded-full border-2 border-light">
+                        </div>
+                        <div>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                            </div>
+                            <p class="text-sm text-gray-600">Trusted by 150+ boutique owners</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group hidden lg:block">
+                    <div class="absolute inset-0 bg-accent/10 rounded-3xl transform rotate-2 transition duration-500 group-hover:rotate-0"></div>
+                    <div class="absolute -right-10 -top-10 w-32 h-32 rounded-full bg-accent/10 blur-3xl"></div>
+                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9" 
+                          alt="Luxury Website Design" 
+                          class="rounded-3xl relative z-10 hover-scale shadow-xl">
+                    <div class="absolute -left-10 -bottom-10 w-48 h-48 rounded-full bg-accent/5 blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee Brands -->
+    <div class="py-10 bg-dark text-light overflow-hidden">
+        <div class="flex space-x-16 animate-marquee whitespace-nowrap">
+            <span class="text-xl font-serif">HAUTE COUTURE</span>
+            <span class="text-xl font-serif">•</span>
+            <span class="text-xl font-serif">LUXURY RETAIL</span>
+            <span class="text-xl font-serif">•</span>
+            <span class="text-xl font-serif">BESPOKE DESIGN</span>
+            <span class="text-xl font-serif">•</span>
+            <span class="text-xl font-serif">PREMIUM E-COMMERCE</span>
+            <span class="text-xl font-serif">•</span>
+            <span class="text-xl font-serif">DIGITAL EXCELLENCE</span>
+            <span class="text-xl font-serif">•</span>
+            <span class="text-xl font-serif">ARTISANAL CRAFTSMANSHIP</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="py-20 px-6 bg-light">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-4xl font-serif font-bold text-primary">
+                        Crafting Digital <span class="text-accent">Masterpieces</span> for Discerning Retailers
+                    </h2>
+                    
+                    <p class="text-lg text-gray-600">
+                        At Zenithly, we understand that your boutique is more than just a store—it's a statement. 
+                        Our team of elite designers and developers create digital experiences that reflect the 
+                        exclusivity and craftsmanship of your brand.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl font-medium">Luxury-First Approach</h4>
+                                <p class="text-gray-600">Every pixel is crafted to exude sophistication and exclusivity.</p>
+                            </div>
+                        </div>
+                                                
+                        <div class="flex items-start space-x-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-chess-queen text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl font-medium">Bespoke Solutions</h4>
+                                <p class="text-gray-600">No templates. Only custom designs tailored to your brand's essence.</p>
+                            </div>
+                        </div>
+                                                
+                        <div class="flex items-start space-x-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-hand-holding-usd text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl font-medium">Value-Driven Pricing</h4>
+                                <p class="text-gray-600">Premium quality with flexible pricing models to suit your budget.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-2xl shadow-lg hover-scale">
+                            <div class="text-5xl font-serif text-accent mb-4">150+</div>
+                            <h4 class="font-medium text-lg">Satisfied Boutiques</h4>
+                            <p class="text-gray-600 text-sm">Across North America & Europe</p>
+                        </div>
+                                                
+                        <div class="bg-white p-6 rounded-2xl shadow-lg hover-scale">
+                            <div class="text-5xl font-serif text-accent mb-4">98%</div>
+                            <h4 class="font-medium text-lg">Client Retention</h4>
+                            <p class="text-gray-600 text-sm">Year-over-year growth</p>
+                        </div>
+                                                
+                        <div class="bg-white p-6 rounded-2xl shadow-lg hover-scale">
+                            <div class="text-5xl font-serif text-accent mb-4">4.9</div>
+                            <h4 class="font-medium text-lg">Average Rating</h4>
+                            <p class="text-gray-600 text-sm">From our luxury clients</p>
+                        </div>
+                                                
+                        <div class="bg-white p-6 rounded-2xl shadow-lg hover-scale">
+                            <div class="text-5xl font-serif text-accent mb-4">24/7</div>
+                            <h4 class="font-medium text-lg">Premium Support</h4>
+                            <p class="text-gray-600 text-sm">Dedicated account managers</p>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -z-10 -left-10 -top-10 w-64 h-64 rounded-full bg-accent/10 blur-3xl"></div>
+                    <div class="absolute -z-10 -right-10 -bottom-10 w-64 h-64 rounded-full bg-accent/5 blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-4">
+                    <span class="text-accent font-medium">OUR WORK</span>
+                </div>
+                <h2 class="text-4xl font-serif font-bold text-primary">
+                    Curated <span class="text-accent">Digital Showcases</span>
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
+                    Explore our portfolio of bespoke digital experiences crafted for luxury fashion retailers.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="group relative overflow-hidden rounded-2xl hover-scale">
+                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9" 
+                          alt="Luxury Fashion Website" 
+                          class="w-full h-96 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition duration-500">
+                        <div>
+                            <h3 class="text-2xl font-serif text-light mb-2">Vogue Atelier</h3>
+                            <p class="text-light/80 mb-4">Premium Fashion Retailer in Milan</p>
+                            <div class="flex space-x-4">
+                                <span class="text-xs bg-accent text-dark px-2 py-1 rounded-full">E-Commerce</span>
+                                <span class="text-xs bg-white/20 text-light px-2 py-1 rounded-full">Custom CMS</span>
+                            </div>
+                            <button class="text-accent flex items-center mt-4">
+                                View Case Study
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="group relative overflow-hidden rounded-2xl hover-scale">
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b3da" 
+                          alt="Luxury Shoe Store Website" 
+                          class="w-full h-96 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition duration-500">
+                        <div>
+                            <h3 class="text-2xl font-serif text-light mb-2">Sole Supreme</h3>
+                            <p class="text-light/80 mb-4">Luxury Footwear Boutique in Paris</p>
+                            <div class="flex space-x-4">
+                                <span class="text-xs bg-accent text-dark px-2 py-1 rounded-full">E-Commerce</span>
+                                <span class="text-xs bg-white/20 text-light px-2 py-1 rounded-full">AR Try-On</span>
+                            </div>
+                            <button class="text-accent flex items-center mt-4">
+                                View Case Study
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="group relative overflow-hidden rounded-2xl hover-scale">
+                    <img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8" 
+                          alt="Luxury Jewelry Website" 
+                          class="w-full h-96 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition duration-500">
+                        <div>
+                            <h3 class="text-2xl font-serif text-light mb-2">Gilded Treasures</h3>
+                            <p class="text-light/80 mb-4">Fine Jewelry Atelier in New York</p>
+                            <div class="flex space-x-4">
+                                <span class="text-xs bg-accent text-dark px-2 py-1 rounded-full">E-Commerce</span>
+                                <span class="text-xs bg-white/20 text-light px-2 py-1 rounded-full">3D Product Viewer</span>
+                            </div>
+                            <button class="text-accent flex items-center mt-4">
+                                View Case Study
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="group relative overflow-hidden rounded-2xl hover-scale">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" 
+                          alt="Luxury Fashion Website" 
+                          class="w-full h-96 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition duration-500">
+                        <div>
+                            <h3 class="text-2xl font-serif text-light mb-2">Chic Haven</h3>
+                            <p class="text-light/80 mb-4">Boutique Fashion House in London</p>
+                            <div class="flex space-x-4">
+                                <span class="text-xs bg-accent text-dark px-2 py-1 rounded-full">E-Commerce</span>
+                                <span class="text-xs bg-white/20 text-light px-2 py-1 rounded-full">Personal Styling</span>
+                            </div>
+                            <button class="text-accent flex items-center mt-4">
+                                View Case Study
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="group relative overflow-hidden rounded-2xl hover-scale">
+                    <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3" 
+                          alt="Luxury Menswear Website" 
+                          class="w-full h-96 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex items-end p-8 opacity-0 group-hover:opacity-100 transition duration-500">
+                        <div>
+                            <h3 class="text-2xl font-serif text-light mb-2">Gentleman's Reserve</h3>
+                            <p class="text-light/80 mb-4">Bespoke Menswear in Tokyo</p>
+                            <div class="flex space-x-4">
+                                <span class="text-xs bg-accent text-dark px-2 py-1 rounded-full">E-Commerce</span>
+                                <span class="text-xs bg-white/20 text-light px-2 py-1 rounded-full">Tailoring Appointments</span>
+                            </div>
+                            <button class="text-accent flex items-center mt-4">
+                                View Case Study
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="group relative overflow-hidden rounded-2xl hover-scale bg-dark flex items-center justify-center">
+                    <div class="text-center p-8">
+                        <h3 class="text-2xl font-serif text-light mb-4">Your Boutique Here</h3>
+                        <p class="text-light/80 mb-6">Let us craft a digital masterpiece for your brand</p>
+                        <button class="bg-accent px-6 py-3 rounded-full text-dark font-medium hover:bg-opacity-90 transition">
+                            Start Your Project
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <button class="border border-accent px-8 py-4 rounded-full text-accent hover:bg-accent hover:text-dark transition">
+                    View Full Portfolio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-6 bg-light">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-4">
+                    <span class="text-accent font-medium">OUR SERVICES</span>
+                </div>
+                <h2 class="text-4xl font-serif font-bold text-primary">
+                    Bespoke <span class="text-accent">Digital Solutions</span>
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
+                    Tailored web solutions designed to elevate your boutique's digital presence.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover-scale group">
+                    <div class="text-accent text-4xl mb-6 font-serif">01</div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-accent transition">Premium E-Commerce</h3>
+                    <p class="text-gray-600 mb-6">
+                        Sophisticated online stores with seamless checkout, inventory management, and luxury shopping experience.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Custom product displays</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Secure payment gateways</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Inventory synchronization</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>VIP customer portals</span>
+                        </li>
+                    </ul>
+                    <button class="text-accent font-medium flex items-center">
+                        Learn More
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover-scale group">
+                    <div class="text-accent text-4xl mb-6 font-serif">02</div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-accent transition">Brand Identity Design</h3>
+                    <p class="text-gray-600 mb-6">
+                        Comprehensive visual identity that communicates your boutique's unique value proposition.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Logo & visual identity</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Brand guidelines</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Typography systems</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Color psychology</span>
+                        </li>
+                    </ul>
+                    <button class="text-accent font-medium flex items-center">
+                        Learn More
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover-scale group">
+                    <div class="text-accent text-4xl mb-6 font-serif">03</div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-accent transition">Content Management</h3>
+                    <p class="text-gray-600 mb-6">
+                        Intuitive systems to manage your boutique's digital content with ease and sophistication.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Custom CMS development</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Product management</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Seasonal lookbooks</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Blog & editorial</span>
+                        </li>
+                    </ul>
+                    <button class="text-accent font-medium flex items-center">
+                        Learn More
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover-scale group">
+                    <div class="text-accent text-4xl mb-6 font-serif">04</div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-accent transition">Digital Marketing</h3>
+                    <p class="text-gray-600 mb-6">
+                        Strategic campaigns to position your boutique as a leader in the luxury fashion space.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>SEO optimization</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Social media integration</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Email marketing</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Influencer collaborations</span>
+                        </li>
+                    </ul>
+                    <button class="text-accent font-medium flex items-center">
+                        Learn More
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover-scale group">
+                    <div class="text-accent text-4xl mb-6 font-serif">05</div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-accent transition">Mobile Experience</h3>
+                    <p class="text-gray-600 mb-6">
+                        Flawless mobile experiences that maintain the luxury feel across all devices.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Responsive design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Progressive web apps</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Mobile-first approach</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Touch optimization</span>
+                        </li>
+                    </ul>
+                    <button class="text-accent font-medium flex items-center">
+                        Learn More
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover-scale group">
+                    <div class="text-accent text-4xl mb-6 font-serif">06</div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-accent transition">Ongoing Support</h3>
+                    <p class="text-gray-600 mb-6">
+                        Premium maintenance and support to ensure your digital presence remains impeccable.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>24/7 monitoring</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Security updates</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Performance optimization</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span>Dedicated account manager</span>
+                        </li>
+                    </ul>
+                    <button class="text-accent font-medium flex items-center">
+                        Learn More
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Calculator -->
+    <section class="py-20 px-6 bg-dark text-light">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-accent/20 border border-accent/30 mb-4">
+                    <span class="text-accent font-medium">TRANSPARENT PRICING</span>
+                </div>
+                <h2 class="text-4xl font-serif font-bold text-light">
+                    Custom <span class="text-accent">Pricing</span> Calculator
+                </h2>
+                <p class="text-lg text-light/80 max-w-2xl mx-auto mt-4">
+                    Adjust the sliders to estimate your investment based on desired features.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-6">
+                        <!-- Feature 1 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <label class="font-medium">E-Commerce Functionality</label>
+                                <span class="text-accent font-medium">+ $2,500</span>
+                            </div>
+                            <input type="range" min="0" max="1" value="1" class="w-full price-slider">
+                        </div>
+                        
+                        <!-- Feature 2 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <label class="font-medium">Custom Design Complexity</label>
+                                <span class="text-accent font-medium">+ $3,500</span>
+                            </div>
+                            <input type="range" min="0" max="3" value="2" class="w-full price-slider">
+                        </div>
+                        
+                        <!-- Feature 3 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <label class="font-medium">Number of Pages</label>
+                                <span class="text-accent font-medium">+ $1,200</span>
+                            </div>
+                            <input type="range" min="5" max="50" value="15" class="w-full price-slider">
+                        </div>
+                        
+                        <!-- Feature 4 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <label class="font-medium">Content Management System</label>
+                                <span class="text-accent font-medium">+ $1,800</span>
+                            </div>
+                            <input type="range" min="0" max="1" value="1" class="w-full price-slider">
+                        </div>
+                        
+                        <!-- Feature 5 -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <label class="font-medium">Ongoing Support (months)</label>
+                                <span class="text-accent font-medium">+ $300/mo</span>
+                            </div>
+                            <input type="range" min="0" max="12" value="6" class="w-full price-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6">
+                        <button class="bg-accent px-8 py-4 rounded-full text-dark font-medium hover:bg-opacity-90 transition w-full">
+                            Get Exact Quote
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-secondary/50 rounded-2xl p-10 border border-accent/20">
+                    <div class="text-center mb-8">
+                        <div class="text-sm text-light/60 mb-2">ESTIMATED INVESTMENT</div>
+                        <div class="text-6xl font-serif font-bold text-accent mb-2">$9,500</div>
+                        <div class="text-light/60">one-time + $1,800/year</div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between py-3 border-b border-light/10">
+                            <span>Base Website</span>
+                            <span class="font-medium">$4,500</span>
+                        </div>
+                        <div class="flex justify-between py-3 border-b border-light/10">
+                            <span>E-Commerce</span>
+                            <span class="font-medium">+ $2,500</span>
+                        </div>
+                        <div class="flex justify-between py-3 border-b border-light/10">
+                            <span>Premium Design</span>
+                            <span class="font-medium">+ $2,000</span>
+                        </div>
+                        <div class="flex justify-between py-3 border-b border-light/10">
+                            <span>15 Pages</span>
+                            <span class="font-medium">+ $1,200</span>
+                        </div>
+                        <div class="flex justify-between py-3 border-b border-light/10">
+                            <span>6 Months Support</span>
+                            <span class="font-medium">+ $1,800</span>
+                        </div>
+                        <div class="flex justify-between py-3 text-accent">
+                            <span class="font-medium">Total</span>
+                            <span class="font-bold">$9,500</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 text-center text-sm text-light/60">
+                        <p>Prices are estimates. Final quote may vary based on specific requirements.</p>
+                        <p class="mt-2">Flexible payment plans available.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-4">
+                    <span class="text-accent font-medium">OUR PROCESS</span>
+                </div>
+                <h2 class="text-4xl font-serif font-bold text-primary">
+                    The Zenithly <span class="text-accent">Experience</span>
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
+                    A meticulous approach to crafting your boutique's digital masterpiece.
+                </p>
+            </div>
+            
+            <div class="relative">
+                <!-- Process Timeline -->
+                <div class="hidden lg:block absolute left-1/2 top-0 h-full w-0.5 bg-accent/20 transform -translate-x-1/2"></div>
+                
+                <div class="space-y-16 lg:space-y-32">
+                    <!-- Step 1 -->
+                    <div class="relative lg:grid lg:grid-cols-2 gap-16 items-center">
+                        <div class="lg:text-right order-1">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent text-dark text-2xl font-serif font-bold mb-6 lg:ml-auto">
+                                1
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold mb-4">Discovery & Consultation</h3>
+                            <p class="text-gray-600">
+                                We begin with an in-depth consultation to understand your boutique's unique identity, 
+                                target audience, and business objectives.
+                            </p>
+                        </div>
+                        
+                        <div class="relative order-2">
+                            <div class="absolute -left-10 -top-10 w-48 h-48 rounded-full bg-accent/5 blur-3xl"></div>
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" 
+                                  alt="Discovery Meeting" 
+                                  class="rounded-2xl hover-scale shadow-xl w-full">
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="relative lg:grid lg:grid-cols-2 gap-16 items-center">
+                        <div class="relative order-2">
+                            <div class="absolute -right-10 -top-10 w-48 h-48 rounded-full bg-accent/5 blur-3xl"></div>
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" 
+                                  alt="Design Process" 
+                                  class="rounded-2xl hover-scale shadow-xl w-full">
+                        </div>
+                        
+                        <div class="order-1">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent text-dark text-2xl font-serif font-bold mb-6">
+                                2
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold mb-4">Design & Strategy</h3>
+                            <p class="text-gray-600">
+                                Our creative team develops a custom design strategy that captures your brand's essence 
+                                while optimizing for user experience and conversion.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="relative lg:grid lg:grid-cols-2 gap-16 items-center">
+                        <div class="lg:text-right order-1">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent text-dark text-2xl font-serif font-bold mb-6 lg:ml-auto">
+                                3
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold mb-4">Development & Refinement</h3>
+                            <p class="text-gray-600">
+                                Our developers bring the design to life with clean, efficient code while incorporating 
+                                your feedback through multiple refinement stages.
+                            </p>
+                        </div>
+                        
+                        <div class="relative order-2">
+                            <div class="absolute -left-10 -top-10 w-48 h-48 rounded-full bg-accent/5 blur-3xl"></div>
+                            <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e" 
+                                  alt="Development Process" 
+                                  class="rounded-2xl hover-scale shadow-xl w-full">
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="relative lg:grid lg:grid-cols-2 gap-16 items-center">
+                        <div class="relative order-2">
+                            <div class="absolute -right-10 -top-10 w-48 h-48 rounded-full bg-accent/5 blur-3xl"></div>
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692" 
+                                  alt="Launch Process" 
+                                  class="rounded-2xl hover-scale shadow-xl w-full">
+                        </div>
+                        
+                        <div class="order-1">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent text-dark text-2xl font-serif font-bold mb-6">
+                                4
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold mb-4">Launch & Optimization</h3>
+                            <p class="text-gray-600">
+                                We deploy your website with precision, then monitor and optimize performance to ensure 
+                                your boutique makes the perfect first impression.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-6 bg-light">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-4">
+                    <span class="text-accent font-medium">CLIENT TESTIMONIALS</span>
+                </div>
+                <h2 class="text-4xl font-serif font-bold text-primary">
+                    Trusted by <span class="text-accent">Luxury Retailers</span>
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
+                    Hear from boutique owners who've transformed their digital presence with Zenithly.
+                </p>
+            </div>
+            
+            <div class="swiper testimonialSwiper">
+                <div class="swiper-wrapper pb-16">
+                    <!-- Testimonial 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white p-10 rounded-2xl testimonial-card hover-scale">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/women/43.jpg" 
+                                      alt="Isabella Rossi" 
+                                      class="w-16 h-16 rounded-full object-cover border-2 border-accent">
+                                <div class="ml-4">
+                                    <h4 class="font-serif text-xl font-bold">Isabella Rossi</h4>
+                                    <p class="text-accent">Owner, Bella Moda Milano</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-6">
+                                "Zenithly transformed our online presence completely. Our e-commerce sales increased by 
+                                240% within three months of launching our new website. The attention to detail and 
+                                understanding of luxury retail is unparalleled."
+                            </p>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white p-10 rounded-2xl testimonial-card hover-scale">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/men/65.jpg" 
+                                      alt="Alexander Dubois" 
+                                      class="w-16 h-16 rounded-full object-cover border-2 border-accent">
+                                <div class="ml-4">
+                                    <h4 class="font-serif text-xl font-bold">Alexander Dubois</h4>
+                                    <p class="text-accent">CEO, Le Château Parisien</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-6">
+                                "Working with Zenithly was like finding a creative partner who truly understood our 
+                                brand's DNA. The website they created perfectly captures the essence of our Parisian 
+                                atelier while delivering exceptional functionality."
+                            </p>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white p-10 rounded-2xl testimonial-card hover-scale">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" 
+                                      alt="Sophia Chen" 
+                                      class="w-16 h-16 rounded-full object-cover border-2 border-accent">
+                                <div class="ml-4">
+                                    <h4 class="font-serif text-xl font-bold">Sophia Chen</h4>
+                                    <p class="text-accent">Founder, Silk Road Couture</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-6">
+                                "The 3D product viewer Zenithly implemented for our jewelry collection has been a 
+                                game-changer. Our customers can now appreciate the craftsmanship in ways that photos 
+                                alone could never convey. Our conversion rates have never been higher."
+                            </p>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white p-10 rounded-2xl testimonial-card hover-scale">
+                            <div class="flex items-center mb-6">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                                      alt="James Wellington" 
+                                      class="w-16 h-16 rounded-full object-cover border-2 border-accent">
+                                <div class="ml-4">
+                                    <h4 class="font-serif text-xl font-bold">James Wellington</h4>
+                                    <p class="text-accent">Director, Savile Row Bespoke</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-6">
+                                "Zenithly's appointment booking system integrated seamlessly with our tailoring 
+                                operations. The ability for clients to select fabrics and input measurements online 
+                                before their visit has streamlined our entire process while maintaining our luxury 
+                                service standards."
+                            </p>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                                <i class="fas fa-star text-accent mr-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-28 px-6 bg-dark text-light relative overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-dark via-dark/90 to-accent/10 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8" 
+                  alt="Luxury Boutique Interior" 
+                  class="w-full h-full object-cover object-center">
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-20">
+            <div class="lg:w-2/3 mx-auto text-center">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-accent/20 border border-accent/30 mb-4">
+                    <span class="text-accent font-medium">READY TO ELEVATE YOUR BOUTIQUE?</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-light mb-6">
+                    Let's Craft Your Digital Masterpiece
+                </h2>
+                <p class="text-lg text-light/80 mb-10 max-w-2xl mx-auto">
+                    Schedule a consultation with our creative director to discuss how we can transform your boutique's 
+                    digital presence into a premium destination.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-accent px-8 py-4 rounded-full text-dark font-medium hover:bg-opacity-90 transition flex items-center justify-center">
+                        Book Consultation
+                        <i class="fas fa-calendar-check ml-3"></i>
+                    </button>
+                    <button class="border border-accent px-8 py-4 rounded-full text-accent hover:bg-accent hover:text-dark transition flex items-center justify-center">
+                        <i class="fas fa-phone-alt mr-3"></i>
+                        +1 (555) 123-4567
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-4">
+                        <span class="text-accent font-medium">GET IN TOUCH</span>
+                    </div>
+                    <h2 class="text-4xl font-serif font-bold text-primary">
+                        Start Your <span class="text-accent">Project</span>
+                    </h2>
+                    <p class="text-lg text-gray-600">
+                        Complete the form to request a proposal tailored to your boutique's needs. 
+                        Our creative director will contact you within 24 hours.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-map-marker-alt text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl font-medium">Our Atelier</h4>
+                                <p class="text-gray-600">123 Luxury Avenue, Suite 500<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-envelope text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl font-medium">Email Us</h4>
+                                <p class="text-gray-600">hello@zenithly.com<br>support@zenithly.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-phone-alt text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl font-medium">Call Us</h4>
+                                <p class="text-gray-600">+1 (555) 123-4567<br>Mon-Fri, 9am-6pm EST</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-light p-10 rounded-2xl shadow-lg">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 mb-2">First Name</label>
+                                <input type="text" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Last Name</label>
+                                <input type="text" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2">Email Address</label>
+                            <input type="email" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2">Boutique Name</label>
+                            <input type="text" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2">Project Details</label>
+                            <textarea rows="4" class="form-input w-full px-4 py-3 rounded-lg focus:outline-none"></textarea>
+                        </div>
+                        
+                        <div class="pt-4">
+                            <button class="bg-accent px-8 py-4 rounded-full text-dark font-medium hover:bg-opacity-90 transition w-full">
+                                Submit Request
+                                <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <a href="#" class="text-3xl font-serif font-bold text-light flex items-center mb-6">
+                        <span class="text-accent">ZENITH</span>LY
+                    </a>
+                    <p class="text-light/80 mb-6">
+                        Crafting digital masterpieces for luxury fashion retailers worldwide.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-light hover:bg-accent hover:text-dark transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-light hover:bg-accent hover:text-dark transition">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-light hover:bg-accent hover:text-dark transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-light hover:bg-accent hover:text-dark transition">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-serif text-xl font-bold text-light mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-light/80 hover:text-accent transition">Premium E-Commerce</a></li>
+                        <li><a href="#" class="text-light/80 hover:text-accent transition">Brand Identity Design</a></li>
+                        <li><a href="#" class="text-light/80 hover:text-accent transition">Content Management</a></li>
+                        <li><a href="#" class="text-light/80 hover:text-accent transition">Digital Marketing</a></li>
+                        <li><a href="#" class="text-light/80 hover:text-accent transition">Mobile Experience</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-serif text-xl font-bold text-light mb-6">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-light/80 hover:text-accent transition">About Us</a></li>
+                        <li><a href="#" class="text-light/80 hover:text-accent transition">Our Process</a></li>
+                        <li><a href="#" class="text-light/80 hover:text-accent transition">Case Studies</a></li>
+                        <li><a href="#" class="text-light/80 hover:text-accent transition">Careers</a></li>
+                        <li><a href="#" class="text-light/80 hover:text-accent transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-serif text-xl font-bold text-light mb-6">Newsletter</h4>
+                    <p class="text-light/80 mb-6">
+                        Subscribe to receive insights on luxury digital trends and exclusive offers.
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="bg-secondary text-light px-4 py-3 rounded-l-lg focus:outline-none w-full">
+                        <button class="bg-accent text-dark px-4 py-3 rounded-r-lg hover:bg-opacity-90 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-light/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-light/60 text-sm mb-4 md:mb-0">
+                    © 2023 Zenithly. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-light/60 hover:text-accent transition text-sm">Privacy Policy</a>
+                    <a href="#" class="text-light/60 hover:text-accent transition text-sm">Terms of Service</a>
+                    <a href="#" class="text-light/60 hover:text-accent transition text-sm">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper
+        const testimonialSwiper = new Swiper('.testimonialSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        // Scroll Reveal Animation
+        ScrollReveal().reveal('.animate-fade-up', {
+            delay: 200,
+            distance: '20px',
+            origin: 'bottom',
+            easing: 'cubic-bezier(0.5, 0, 0, 1)',
+            interval: 100
+        });
+
+        // Price Calculator Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliders = document.querySelectorAll('.price-slider');
+            
+            sliders.forEach(slider => {
+                slider.addEventListener('input', updatePrice);
+            });
+            
+            function updatePrice() {
+                // This is a simplified calculation - in a real scenario, you would calculate based on actual values
+                const basePrice = 4500;
+                const ecommerce = document.querySelectorAll('.price-slider')[0].value * 2500;
+                const design = document.querySelectorAll('.price-slider')[1].value * 1000;
+                const pages = (document.querySelectorAll('.price-slider')[2].value - 5) * 100;
+                const cms = document.querySelectorAll('.price-slider')[3].value * 1800;
+                const support = document.querySelectorAll('.price-slider')[4].value * 300;
+                
+                const totalPrice = basePrice + ecommerce + design + pages + cms + support;
+                const supportYearly = document.querySelectorAll('.price-slider')[4].value * 300 * 12;
+                
+                document.querySelector('.text-6xl').textContent = `$${totalPrice.toLocaleString()}`;
+                document.querySelector('.text-light\\/60').textContent = `one-time + $${supportYearly.toLocaleString()}/year`;
+                
+                // Update breakdown
+                document.querySelectorAll('.flex.justify-between.py-3.border-b.border-light\\/10')[0].querySelector('span:last-child').textContent = `$${basePrice.toLocaleString()}`;
+                document.querySelectorAll('.flex.justify-between.py-3.border-b.border-light\\/10')[1].querySelector('span:last-child').textContent = `+ $${ecommerce.toLocaleString()}`;
+                document.querySelectorAll('.flex.justify-between.py-3.border-b.border-light\\/10')[2].querySelector('span:last-child').textContent = `+ $${design.toLocaleString()}`;
+                document.querySelectorAll('.flex.justify-between.py-3.border-b.border-light\\/10')[3].querySelector('span:last-child').textContent = `+ $${pages.toLocaleString()}`;
+                document.querySelectorAll('.flex.justify-between.py-3.border-b.border-light\\/10')[4].querySelector('span:last-child').textContent = `+ $${support.toLocaleString()}`;
+                document.querySelectorAll('.flex.justify-between.py-3.text-accent')[0].querySelector('span:last-child').textContent = `$${totalPrice.toLocaleString()}`;
+            }
+        });
+    </script>
+</html>
